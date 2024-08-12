@@ -15,7 +15,3 @@ const float x_train[length_x][height_x] = {
 
 const int y_train[length_y] = { -1, 1, 1, -1, -1, 1, 1, -1, 1, -1 };
 
-float w[2] = { 0, -1 };
-
-int N = 50;
-int Q = 0;

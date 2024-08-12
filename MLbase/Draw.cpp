@@ -1,9 +1,10 @@
 #include "Draw.h"
 #include <iostream>
 #include <cmath>
+#include "iterating.h"
 
 // Constructor to initialize the RenderWindow and load the font
-Draw::Draw(sf::RenderWindow& window) : m_window(window) {
+Draw::Draw(sf::RenderWindow& window, float w_) : m_window(window), w{ w_, -1 } {
     if (!font.loadFromFile("arial.ttf")) {
         std::cerr << "Error loading font\n";
     }
@@ -108,6 +109,19 @@ void Draw::drawPoints() {
 
 
 
+void Draw::drawLine(float w[]) {
+    for (float x = 0; x <= SIZE; x += 10) {
+        float y = (-x) * w[0] / w[1];
+        // Transform the point's position to fit in the window
+        float xPos = SIZE / 2 + x;
+        float yPos = SIZE / 2 - y;
+        functionPoints.push_back(sf::Vertex(sf::Vector2f(xPos, yPos), sf::Color::Green));
+    }
+    m_window.draw(&functionPoints[0], functionPoints.size(), sf::LinesStrip);
+}
+
+
+
 
 
 
@@ -124,4 +138,7 @@ void Draw::draw() {
     drawYAxis();
     initPoints();
     drawPoints();
+
+    
+    drawLine(w);
 }

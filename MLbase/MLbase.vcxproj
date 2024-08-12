@@ -127,17 +127,24 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Button.cpp" />
     <ClCompile Include="Config.cpp" />
+    <ClCompile Include="Differentiation.cpp" />
     <ClCompile Include="Draw.cpp" />
+    <ClCompile Include="Iterating.cpp" />
     <ClCompile Include="MLbase.cpp" />
     <ClCompile Include="Point.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Iterating_config.h" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Button.h" />
     <ClInclude Include="Config.h" />
+    <ClInclude Include="Differentiation.h" />
     <ClInclude Include="Draw.h" />
+    <ClInclude Include="Iterating.h" />
     <ClInclude Include="Point.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
