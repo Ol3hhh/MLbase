@@ -85,8 +85,8 @@ void Draw::drawGridAndLabels() {
 // Initialize points based on the data in Config.h
 void Draw::initPoints() {
     for (size_t i = 0; i < length_x; i++) {
-        points[i].setX(SIZE / 2 + x_train[i][0] * 5);
-        points[i].setY(SIZE / 2 - x_train[i][1] * 5);
+        points[i].setX1(SIZE / 2 + x_train[i][0] * 5);
+        points[i].setX2(SIZE / 2 - x_train[i][1] * 5);
         points[i].setGroup(y_train[i]);
     }
 }
@@ -101,7 +101,7 @@ void Draw::drawPoints() {
         else {
             circle.setFillColor(sf::Color::Red);
         }
-        circle.setPosition(points[i].getX(), points[i].getY());
+        circle.setPosition(points[i].getX1(), points[i].getX2());
         m_window.draw(circle);
     }
 }

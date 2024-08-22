@@ -3,6 +3,8 @@
 #include "Draw.h"
 #include "Button.h"
 #include "Iterating.h"
+#include "Differentiation.h"
+
 
 bool isMenu = true;
 

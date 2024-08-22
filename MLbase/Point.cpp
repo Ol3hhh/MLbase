@@ -1,12 +1,12 @@
 #include "Point.h"
 
-float Point::getX() const {
-    return x;
+float Point::getX1() const {
+    return x1;
 }
 
 // Getter for y
-float Point::getY() const {
-    return y;
+float Point::getX2() const {
+    return x2;
 }
 
 
@@ -16,13 +16,13 @@ int Point::getGroup() const {
 
 
 // Setter for x
-void Point::setX(float xVal) {
-    x = xVal;
+void Point::setX1(float xVal) {
+    x1 = xVal;
 }
 
 // Setter for y
-void Point::setY(float yVal) {
-    y = yVal;
+void Point::setX2(float yVal) {
+    x2 = yVal;
 }
 
 
