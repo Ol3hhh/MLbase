@@ -1,10 +1,9 @@
 #include "Draw.h"
-#include <iostream>
-#include <cmath>
-#include "iterating.h"
+
+
 
 // Constructor to initialize the RenderWindow and load the font
-Draw::Draw(sf::RenderWindow& window, float w_) : m_window(window), w{ w_, -1 } {
+Draw::Draw(sf::RenderWindow& window) : m_window(window) {
     if (!font.loadFromFile("arial.ttf")) {
         std::cerr << "Error loading font\n";
     }
@@ -34,7 +33,7 @@ void Draw::drawYAxis() {
 
 // Draw grid and labels for both axes
 void Draw::drawGridAndLabels() {
-    const int step = 50; // Distance between grid lines
+    const int step = SIZE / 20; // Distance between grid lines
     int x = 0;
     int y = 0;
     for (size_t i = 0; i < SIZE / step; i++) {
@@ -58,35 +57,50 @@ void Draw::drawGridAndLabels() {
     
 
 
-
+    x = 0;
     // Create labels for X axis
     for (int i = -10; i <= 10; ++i) {
         sf::Text label;
         label.setFont(font);
-        label.setString(std::to_string(i * 10));
+        label.setString(std::to_string(i));
         label.setCharacterSize(12);
         label.setFillColor(sf::Color::Black);
-        label.setPosition(SIZE / 2 + i * 100 - 10, SIZE / 2 + 10); // Adjust x position and y position below the X axis
+        label.setPosition(x, SIZE/2); // Adjust x position and y position below the X axis
         xLabels.push_back(label);
+        x += step;
     }
 
     // Create labels for Y axis
+    y = 0;
     for (int i = -10; i <= 10; ++i) {
         sf::Text label;
         label.setFont(font);
-        label.setString(std::to_string(i * 10));
+        label.setString(std::to_string(i));
         label.setCharacterSize(12);
         label.setFillColor(sf::Color::Black);
-        label.setPosition(SIZE / 2 + 10, SIZE / 2 - i * 100 - 10); // Adjust x position right of the Y axis
+        label.setPosition(SIZE / 2, y); // Adjust x position right of the Y axis
         yLabels.push_back(label);
+        y += step;
     }
 }
+
+
+//void Draw::initPoints() { //for the source code
+//    for (size_t i = 0; i < length_x; i++) {
+//        points[i].setX(SIZE / 2 + x_train[i][0] * 5);
+//        points[i].setY(SIZE / 2 - x_train[i][1] * 5);
+//        points[i].setGroup(y_train[i]);
+//    }
+//}
+
+
 
 // Initialize points based on the data in Config.h
 void Draw::initPoints() {
     for (size_t i = 0; i < length_x; i++) {
-        points[i].setX1(SIZE / 2 + x_train[i][0] * 5);
-        points[i].setX2(SIZE / 2 - x_train[i][1] * 5);
+        points[i].setX1(rescaleX(x_train[i][0]));
+        std::cout << rescaleY(x_train[i][1]) << std::endl;
+        points[i].setX2(rescaleY(x_train[i][1]));
         points[i].setGroup(y_train[i]);
     }
 }
@@ -109,16 +123,7 @@ void Draw::drawPoints() {
 
 
 
-void Draw::drawLine(float w[]) {
-    for (float x = 0; x <= SIZE; x += 10) {
-        float y = (-x) * w[0] / w[1];
-        // Transform the point's position to fit in the window
-        float xPos = SIZE / 2 + x;
-        float yPos = SIZE / 2 - y;
-        functionPoints.push_back(sf::Vertex(sf::Vector2f(xPos, yPos), sf::Color::Green));
-    }
-    m_window.draw(&functionPoints[0], functionPoints.size(), sf::LinesStrip);
-}
+
 
 
 
@@ -126,7 +131,7 @@ void Draw::drawLine(float w[]) {
 
 
 // Call all drawing functions
-void Draw::draw() {
+void Draw::draw(int mode) {
     drawGridAndLabels();
     for (const auto& label : xLabels) {
         m_window.draw(label);
@@ -138,7 +143,25 @@ void Draw::draw() {
     drawYAxis();
     initPoints();
     drawPoints();
+    
+    switch (mode)
+    {
+    case 1:
+    {
+        Iterating iter;
+        iter.drawLine(m_window);
+
+        break;  // Include a break to prevent fall-through
+    }
+    case 2:
+    {
+        Differentiation df;
+        df.drawLine(m_window);
+        break;
+    }
+    default:
+        break;
+    }
 
     
-    drawLine(w);
 }

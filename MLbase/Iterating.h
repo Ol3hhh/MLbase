@@ -1,5 +1,6 @@
 #pragma once
 #include "Config.h"
+#include <SFML/Graphics.hpp>
 class Iterating
 {
 private:
@@ -11,9 +12,12 @@ private:
 	int N = 50;//number of iteratings
 	float mu = 0.1;//step of learning
 	float e = 0.1; //shift of the line
+
+	std::vector<sf::Vertex> functionPoints;
 public:
 	int sign(float arg);
 	float a(float x[], float w[]);
 	float counting();
+	void drawLine(sf::RenderWindow& m_window);
 };
 

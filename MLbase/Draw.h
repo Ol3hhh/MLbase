@@ -1,12 +1,18 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include <iostream>
+#include "Rescale.h"
 #include "Config.h"
 #include "Point.h"
+#include "Iterating.h"
+#include "Differentiation.h"
+
+
 
 class Draw {
 public:
     // Constructor to initialize the RenderWindow and font
-    Draw(sf::RenderWindow& window, float w_);
+    Draw(sf::RenderWindow& window);
 
     // Method to draw the X-axis
     void drawXAxis();
@@ -23,9 +29,9 @@ public:
     // Method to draw the points on the graph
     void drawPoints();
 
-    void drawLine(float w[]);
+    
     // Method to call all draw functions
-    void draw();
+    void draw(int mode);
 
 private:
     Point points[length_x];       // Array of points to be drawn
@@ -35,6 +41,6 @@ private:
     sf::Font font;                // Font for drawing text labels
     std::vector<sf::Text> xLabels;
     std::vector<sf::Text> yLabels;
-    std::vector<sf::Vertex> functionPoints;
+    
     float w[2];
 };

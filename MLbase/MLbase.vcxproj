@@ -131,9 +131,11 @@
     <ClCompile Include="Config.cpp" />
     <ClCompile Include="Differentiation.cpp" />
     <ClCompile Include="Draw.cpp" />
+    <ClCompile Include="Gradient.cpp" />
     <ClCompile Include="Iterating.cpp" />
     <ClCompile Include="MLbase.cpp" />
     <ClCompile Include="Point.cpp" />
+    <ClCompile Include="Rescale.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Iterating_config.h" />
@@ -144,8 +146,10 @@
     <ClInclude Include="Config.h" />
     <ClInclude Include="Differentiation.h" />
     <ClInclude Include="Draw.h" />
+    <ClInclude Include="Gradient.h" />
     <ClInclude Include="Iterating.h" />
     <ClInclude Include="Point.h" />
+    <ClInclude Include="Rescale.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
@@ -156,6 +160,8 @@
     <Import Project="..\packages\sfml_window.2.6.0\build\native\sfml_window.targets" Condition="Exists('..\packages\sfml_window.2.6.0\build\native\sfml_window.targets')" />
     <Import Project="..\packages\sfml_graphics.2.6.0\build\native\sfml_graphics.targets" Condition="Exists('..\packages\sfml_graphics.2.6.0\build\native\sfml_graphics.targets')" />
     <Import Project="..\packages\Eigen.3.3.3\build\native\Eigen.targets" Condition="Exists('..\packages\Eigen.3.3.3\build\native\Eigen.targets')" />
+    <Import Project="..\packages\matplotlib-cpp.1.1.0.92\build\native\matplotlib-cpp.targets" Condition="Exists('..\packages\matplotlib-cpp.1.1.0.92\build\native\matplotlib-cpp.targets')" />
+    <Import Project="..\packages\opencv4.2.2020.5.26\build\native\opencv4.2.targets" Condition="Exists('..\packages\opencv4.2.2020.5.26\build\native\opencv4.2.targets')" />
   </ImportGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
@@ -168,5 +174,7 @@
     <Error Condition="!Exists('..\packages\sfml_window.2.6.0\build\native\sfml_window.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\sfml_window.2.6.0\build\native\sfml_window.targets'))" />
     <Error Condition="!Exists('..\packages\sfml_graphics.2.6.0\build\native\sfml_graphics.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\sfml_graphics.2.6.0\build\native\sfml_graphics.targets'))" />
     <Error Condition="!Exists('..\packages\Eigen.3.3.3\build\native\Eigen.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Eigen.3.3.3\build\native\Eigen.targets'))" />
+    <Error Condition="!Exists('..\packages\matplotlib-cpp.1.1.0.92\build\native\matplotlib-cpp.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\matplotlib-cpp.1.1.0.92\build\native\matplotlib-cpp.targets'))" />
+    <Error Condition="!Exists('..\packages\opencv4.2.2020.5.26\build\native\opencv4.2.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\opencv4.2.2020.5.26\build\native\opencv4.2.targets'))" />
   </Target>
 </Project>

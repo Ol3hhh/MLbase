@@ -2,6 +2,7 @@
 
 Differentiation::Differentiation() {
     w.setZero();
+    counting();
 }
 
 void Differentiation::x_init() {
@@ -29,5 +30,18 @@ void Differentiation::counting() {
 
     w = a * b.inverse();
 
+    std::cout << w << std::endl;
+    std::cout << "<<<<<<<<" << std::endl;
+}
 
+void Differentiation::drawLine(sf::RenderWindow& m_window) {
+    
+    for (float x_ = 0; x_ <= SIZE; x_ += 10) { // x_ bc we have matrix x
+        float y_ = -(w(2, 0) + x_ * w(0, 0)) / w(1, 0); // w(0,0) = w_1 | w(1, 0) = w_2 | w(2, 0) = w_0
+        // Transform the point's position to fit in the window
+        float xPos = SIZE / 2 + x_;
+        float yPos = SIZE / 2 - y_;
+        functionPoints.push_back(sf::Vertex(sf::Vector2f(xPos, yPos), sf::Color::Green));
+    }
+    m_window.draw(&functionPoints[0], functionPoints.size(), sf::LinesStrip);
 }
