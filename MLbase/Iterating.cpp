@@ -15,7 +15,7 @@ float Iterating::a(float x[], float w[]) {
 	return sign(w[0] * x[0] + w[1] * x[1]);
 }
 
-float Iterating::counting() {
+float Iterating::count() {
 	for (size_t i = 0; i < N; i++) {
 		for (size_t j = 0; j < length_x; j++) {
 			x[0] = x_train[j][0];
@@ -37,7 +37,7 @@ float Iterating::counting() {
 
 void Iterating::drawLine(sf::RenderWindow& m_window) {
 	float w[2];
-	w[0] = counting();
+	w[0] = count();
 	w[1] = -1;
 	for (float x = 0; x <= SIZE; x += 10) {
 		float y = (-x) * w[0] / w[1];
@@ -48,3 +48,7 @@ void Iterating::drawLine(sf::RenderWindow& m_window) {
 	}
 	m_window.draw(&functionPoints[0], functionPoints.size(), sf::LinesStrip);
 }
+
+void Iterating::counting() {}
+
+void Iterating::x_init() {}

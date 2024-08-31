@@ -2,15 +2,12 @@
 #include <Eigen/Dense>
 #include <SFML/Graphics.hpp>
 #include "Config.h"
+#include "Base.h"
 #include <iostream>
-class Differentiation {
-private:
-    Eigen::Matrix<float, 3, 1> w;
-    Eigen::Matrix<float, 3, 1> x[length_x]; // Array of Eigen matrices
-    std::vector<sf::Vertex> functionPoints;
+class Differentiation : public Base{
 public:
     Differentiation();
-    void counting();
-    void drawLine(sf::RenderWindow& m_window);
-    void x_init();  // No need to pass x as a parameter
+    void counting() override;
+    void drawLine(sf::RenderWindow& m_window) override;
+    void x_init() override;  // No need to pass x as a parameter
 };

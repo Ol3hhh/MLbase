@@ -19,6 +19,7 @@ int main() {
     // Create button
     Button It(100, 100, 200, 50, "Iterating", font, 24); // mode = 1 
     Button Df(100, 200, 200, 50, "Differentiation ", font, 24); // mode = 2
+    Button SGD(100, 300, 200, 50, "SGD ", font, 24); // mode = 3
     Button Exit(100, 100, 200, 50, "Exit", font, 24); 
     
     // Iterating and Draw setup
@@ -58,6 +59,7 @@ int main() {
         if (isMenu) {
             It.draw(window);
             Df.draw(window);
+            SGD.draw(window);
         }
         else {
             drawer.draw(mode);
