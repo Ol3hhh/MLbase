@@ -99,7 +99,7 @@ void Draw::drawGridAndLabels() {
 void Draw::initPoints() {
     for (size_t i = 0; i < length_x; i++) {
         points[i].setX1(rescaleX(x_train[i][0]));
-        std::cout << rescaleY(x_train[i][1]) << std::endl;
+        //std::cout << rescaleY(x_train[i][1]) << std::endl;
         points[i].setX2(rescaleY(x_train[i][1]));
         points[i].setGroup(y_train[i]);
     }
@@ -144,10 +144,13 @@ void Draw::draw(int mode) {
     initPoints();
     drawPoints();
     
+
+    bool isCounted = false; //variable for avoiding wasting of the resourses
     switch (mode)
     {
     case 1:
     {
+        
         Iterating iter;
         iter.drawLine(m_window);
 
@@ -157,6 +160,12 @@ void Draw::draw(int mode) {
     {
         Differentiation df;
         df.drawLine(m_window);
+        break;
+    }
+    case 3:
+    {
+        SGD sgd;
+        sgd.drawLine(m_window);
         break;
     }
     default:

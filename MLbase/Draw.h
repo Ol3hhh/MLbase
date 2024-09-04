@@ -6,7 +6,7 @@
 #include "Point.h"
 #include "Iterating.h"
 #include "Differentiation.h"
-
+#include "Gradient.h"
 
 
 class Draw {

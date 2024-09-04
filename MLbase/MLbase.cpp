@@ -2,7 +2,9 @@
 #include <SFML/Graphics.hpp>
 #include "Draw.h"
 #include "Button.h"
-
+#include "Iterating.h"
+#include "Differentiation.h"
+#include "Gradient.h"
 
 bool isMenu = true;
 unsigned int mode;
@@ -43,6 +45,11 @@ int main() {
                         std::cout << "Button 2 clicked" << std::endl;
                         isMenu = false;
                         mode = 2;
+                    }
+                    else if (SGD.isClicked(sf::Mouse::getPosition(window)) && isMenu) {
+                        std::cout << "Button 3 clicked" << std::endl;
+                        isMenu = false;
+                        mode = 3;
                     }
                     else if (Exit.isClicked(sf::Mouse::getPosition(window)) && !isMenu) {
                         std::cout << "Button Exit clicked" << std::endl;
